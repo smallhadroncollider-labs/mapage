@@ -11,6 +11,11 @@
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
+        {{-- Add a development mode warning banner --}}
+        @if (app()->environment() !== "production")
+        <div class="dev"><div class="dev__banner"></div><div class="dev__displace"></div></div>
+        @endif
+
         @yield('content')
     </body>
 </html>

@@ -1,0 +1,15 @@
+.dev {
+    &__banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        background-color: #FF0;
+        @include background-image(repeating-linear-gradient(60deg, #FF0, #FF0 10px, #000 10px, #000 20px));
+    }
+
+    &__displace {
+        height: 30px;
+    }
+}
