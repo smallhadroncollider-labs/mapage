@@ -10,9 +10,8 @@ dev_public		:=		public
 dev_www			:=		$(shell find $(dev_public) -type f -depth 1 -not -path "*.DS_Store")
 dev_scss		:=		$(shell find $(dev_public)/scss -name "*.scss")
 dev_css			:=		$(dev_public)/css/main.css
-dev_img			:=		$(shell find $(dev_public)/images -type f -not -path "*.DS_Store")
+dev_img			:=		$(shell find $(dev_public)/img -type f -not -path "*.DS_Store")
 dev_fonts		:=		$(shell find $(dev_public)/fonts -not -path "*.DS_Store")
-dev_documents	:=		$(shell find $(dev_public)/documents -not -path "*.DS_Store")
 
 app_folders		:=		artisan app bootstrap config resources storage
 dev_app			:=		$(shell find $(app_folders) -type f -not -path "*.DS_Store") $(shell find database -type f -path "*.php")

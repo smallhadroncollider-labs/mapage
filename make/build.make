@@ -39,7 +39,7 @@ $(build_fonts): $(dev_fonts)
 $(refs)/app.ref: $(dev_app)
 	@- mkdir $(output)
 	@ touch $@
-	rsync -R $? $(output)
+	rsync -R $? $(output)/
 
 $(refs)/vendor.ref: composer.json
 	@ touch $@
