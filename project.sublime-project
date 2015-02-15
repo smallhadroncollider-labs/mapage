@@ -8,6 +8,7 @@
                 "*.sublime-project"
             ],
             "folder_exclude_patterns": [
+                "build",
                 "vendor",
                 "node_modules",
                 ".sass-cache",
