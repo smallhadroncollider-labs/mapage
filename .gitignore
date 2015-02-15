@@ -1,3 +1,18 @@
+# Laravel
 /vendor
-/node_modules
 .env
+
+# Nginx
+nginx_error.log
+
+# Styling
+public/css/main.css
+.sass-cache/
+
+# JS
+vendor/
+node_modules/
+
+# Make
+make/.refs/*.ref
+build/
