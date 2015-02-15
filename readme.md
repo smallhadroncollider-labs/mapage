@@ -26,6 +26,10 @@ You should edit the `db` and `password` variables in the `provision.sh` file and
 - You can run `sh watch` from the root directory to keep `make watch` running
 - Uses `terminal-notifier` and `chrome-cli`
 
+```
+brew install terminal-notifier chrome-cli
+```
+
 ### Compass
 
 - Install Bundler `gem install bundler`
