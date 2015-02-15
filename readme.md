@@ -2,11 +2,12 @@
 
 ## Changes
 
-- Vagrant support
-- Makefile
-- Basic Compass
-- Sublime Text project files
-- Whoops added back
+- Vagrant config
+- Makefile config
+- Compass config
+- Sublime Text config
+- Added [Whoops](https://github.com/filp/whoops)
+- Added [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar)
 
 ## Details
 
