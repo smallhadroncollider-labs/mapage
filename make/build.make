@@ -22,10 +22,10 @@ $(build_css): $(dev_scss) $(css_replace)
 	@- mkdir -p $(dir $@)
 	@- cp $(css_replace) $(output)/$(css_replace)
 
-	compass compile -e production --css-dir=$(dir $(build_css))
-	@ cssshrink $@ > $(dir $@)main-shrunk.css && mv $(dir $@)main-shrunk.css $@
+	compass compile -e production --css-dir=$(dir $@)
+	@ cssshrink $(dir $@)main.css > $(dir $@)main-shrunk.css && mv $(dir $@)main-shrunk.css $(dir $@)main.css
 
-	@ hash=$$(hash.sh $@); \
+	@ hash=$$(hash.sh $(dir $@)main.css); \
 		replace.sh "/css/main.css" "/css/$$hash.main.css" $(output)/$(css_replace)
 
 $(build_img): $(dev_img)

@@ -23,7 +23,7 @@ output			:=		build
 build_public	:=		$(output)/public
 
 build_www		:=		$(build_public)
-build_css		:=		$(build_public)/css/main.css
+build_css		:=		$(build_public)/css/*.main.css
 build_img		:=		$(build_public)/images
 build_fonts		:=		$(build_public)/fonts
 build_documents	:=		$(build_public)/documents
