@@ -1,0 +1,12 @@
+scss_files: "public/scss/*.scss"
+
+linters:
+  StringQuotes:
+    enabled: true
+    style: double_quotes
+
+  Indentation:
+    width: 4
+
+  Comment:
+    enabled: false
