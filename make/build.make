@@ -7,11 +7,11 @@ push:
 	cd $(output) && git add -A && git commit -m "Latest build" && git push origin master
 
 before:
-	@ git stash > /dev/null
+	@- git stash > /dev/null
 	@ printf "\nStashing uncommitted changes\n\n"
 
 after:
-	@ git stash pop > /dev/null
+	@- git stash pop > /dev/null
 	@ printf "\nUnstashing uncommitted changes\n\n"
 
 $(build_www): $(dev_www) $(refs)/app.ref
