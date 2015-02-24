@@ -27,6 +27,12 @@ DB_PASSWORD=${password}
 
 CACHE_DRIVER=file
 SESSION_DRIVER=file
+
+MAIL_DRIVER=smtp
+MAIL_HOST=mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
 " > /var/www/.env
 
 # Update Composer & Migrate Database
