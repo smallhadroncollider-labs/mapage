@@ -5,8 +5,9 @@
         left: 0;
         right: 0;
         height: 30px;
-        background-color: #FF0;
-        @include background-image(repeating-linear-gradient(60deg, #FF0, #FF0 10px, #000 10px, #000 20px));
+        background-color: #444;
+        @include background-image(linear-gradient(45deg, rgba(255, 255, 0, 0.8) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 0, 0.8) 50%, rgba(255, 255, 0, 0.8) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)));
+        @include background-size(50px 50px);
     }
 
     &__displace {
