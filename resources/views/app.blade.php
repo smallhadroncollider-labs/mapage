@@ -9,6 +9,7 @@
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="/css/main.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     </head>
     <body>
         {{-- Add a development mode warning banner --}}
@@ -16,6 +17,9 @@
         <div class="dev"><div class="dev__banner"></div><div class="dev__displace"></div></div>
         @endif
 
-        @yield('content')
+        <div class="container">
+            <h1>Mapage</h1>
+            @yield('content')
+        </div>
     </body>
 </html>

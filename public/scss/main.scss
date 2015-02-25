@@ -1,12 +1,12 @@
-// Reset
-@import "compass/reset";
-
 /**
  * Includes
  */
 @import "rgbapng";
 @import "compass/css3";
 @import "compass/typography/vertical_rhythm";
+
+@import "CSS:skeleton/css/normalize";
+@import "CSS:skeleton/css/skeleton";
 
 // Fonts
 $base-font-size: 16px;
