@@ -21,12 +21,25 @@ $(build_www): $(dev_www) $(refs)/app.ref
 $(build_css): $(dev_scss) $(css_replace)
 	@- mkdir -p $(dir $@)
 	@- cp $(css_replace) $(output)/$(css_replace)
+	@- rm $(build_css)
 
 	compass compile -e production --css-dir=$(dir $@)
 	@ cssshrink $(dir $@)main.css > $(dir $@)main-shrunk.css && mv $(dir $@)main-shrunk.css $(dir $@)main.css
 
 	@ hash=$$(hash.sh $(dir $@)main.css); \
-		replace.sh "/css/main.css" "/css/$$hash.main.css" $(output)/$(css_replace)
+		replace.sh "/css/main.css" "/css/$$hash.main.css" "$(output)/$(css_replace)"
+
+$(build_js): $(dev_js) build.js $(js_replace)
+	@- mkdir -p $(dir $@)
+	@- cp $(js_replace) $(output)/$(js_replace)
+	@- rm $(build_js)
+
+	r.js -o build.js out=$(dir $@)main.js
+
+	@ replace.sh 'environment:"development"' 'environment:"staging"' "$(dir $@)main.js"
+
+	@ hash=$$(hash.sh $(dir $@)main.js); \
+		replace.sh "<script data-main=\"/js/load.js\" src=\"/vendor/requirejs/require.js\">" "<script src=\"/js/$$hash.main.js\">" "$(output)/$(js_replace)"
 
 $(build_img): $(dev_img)
 	@- mkdir -p $(build_img)
@@ -39,6 +52,7 @@ $(build_fonts): $(dev_fonts)
 $(refs)/app.ref: $(dev_app)
 	@- mkdir $(output)
 	@ touch $@
+	@ rm -rf $(output)/storage/debugbar
 	rsync -R $? $(output)/
 
 $(refs)/vendor.ref: composer.json
