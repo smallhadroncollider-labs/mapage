@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+$router->get('/', 'HomeController@index');
 
-Route::controllers([
+$router->group([
+    "prefix" => "api",
+], function ($router) {
+    $router->get("/messages", "MessagesController@index");
+    $router->post("/messages", "MessagesController@store");
+});
+
+$router->controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
