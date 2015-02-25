@@ -1,5 +1,5 @@
 # Set the site name
-site_name = "xxx"
+site_name = "mapage"
 
 Vagrant.configure(2) do |config|
   config.vm.box = "smallhadroncollider/ubuntu-14.04-nginx-php55-mysql"
@@ -12,9 +12,6 @@ Vagrant.configure(2) do |config|
 
   # Setup the server root
   config.vm.synced_folder "./", "/var/www"
-
-  # Share the composer cache
-  config.vm.synced_folder "~/.composer", "/root/.composer"
 
   # Add provisioning
   config.vm.provision "shell", path: "provision.sh"

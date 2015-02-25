@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Variables
-db="xxx"
-password="xxx"
+db="mapage"
+password="CqNrS6u!qBxGs8NvM#Gv"
 
 # Create databases
 echo "
