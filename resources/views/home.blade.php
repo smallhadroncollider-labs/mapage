@@ -1,7 +1,9 @@
 @extends('app')
 
 @section('content')
-<form id="js__message">
+<p id="js__loading" class="throb">Loading...</p>
+
+<form class="hidden" id="js__message">
     <div>
         <textarea id="js__message-text" placeholder="Leave a message"></textarea>
     </div>

@@ -12,9 +12,27 @@
 $base-font-size: 15px;
 $base-line-height: 24px;
 
-html, body {
+html,
+body {
     // @include debug-vertical-alignment();
 }
 
 // Import site
 @import "blocks/dev";
+
+.hidden {
+    display: none;
+}
+
+@include keyframes(throb) {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.throb {
+    @include animation-name(throb);
+    @include animation-duration(3000ms);
+    @include animation-iteration-count(infinite);
+    @include animation-timing-function(ease);
+}

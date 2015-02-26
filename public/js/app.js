@@ -23,6 +23,7 @@ define([
 
     // Get elements
     var list = document.getElementById("js__message-list"),
+        loading = document.getElementById("js__loading"),
         form = document.getElementById("js__message"),
         text = document.getElementById("js__message-text");
 
@@ -35,6 +36,9 @@ define([
                 latitude: position.latitude,
                 longitude: position.longitude
             }).then(function (data) {
+                form.style.display = "block";
+                loading.style.display = "none";
+
                 _.forEach(data, function (item) {
                     var listItem = document.createElement("li");
                     listItem.innerHTML = item.message;
