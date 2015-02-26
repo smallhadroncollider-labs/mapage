@@ -28,6 +28,10 @@ body {
     color: #F22;
 }
 
+[disabled] {
+    opacity: 0.5;
+}
+
 @include keyframes(throb) {
     0% { opacity: 1; }
     50% { opacity: 0; }

@@ -8,7 +8,7 @@
         <textarea id="js__message-text" placeholder="Leave a message"></textarea>
     </div>
 
-    <button>Submit</button>
+    <button id="js__submit">Submit</button>
 </form>
 
 <ul id="js__message-list"></ul>
