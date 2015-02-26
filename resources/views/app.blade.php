@@ -23,6 +23,7 @@
                 <div class="six columns">
                     <div class="user">
                         @if ($user)
+                        <a class="user__name" href="/logout">Logout</a>
                         <span class="user__name">{{ $user->name }}</span>
                         <img class="avatar user__img" src="{{ $user->gravatar }}" />
                         @else
