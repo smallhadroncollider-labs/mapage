@@ -7,13 +7,13 @@ define([
     "json!config.json",
     "request",
     "position",
-    "text!templates/message.html"
+    "render"
 ], function (
     log,
     config,
     request,
     position,
-    message
+    renderMessages
 ) {
     "use strict";
 
@@ -24,38 +24,27 @@ define([
     }
 
     // Get elements
-    var list = document.getElementById("js__message-list"),
-        loading = document.getElementById("js__loading"),
+    var loading = document.getElementById("js__loading"),
         form = document.getElementById("js__message"),
         text = document.getElementById("js__message-text"),
+        loginMessage = document.getElementById("js__login-message"),
         submit = document.getElementById("js__submit");
 
     var getUser = function () {
         return request.get("current");
     };
 
-
     var error = function (error) {
         loading.innerHTML = "Error: " + error.message;
         loading.setAttribute("class", "error");
     };
 
-    var messageTemplate = _.template(message);
-
-    var renderList = function (data) {
-        list.innerHTML = null;
-
-        _.forEach(data, function (item) {
-            var listItem = document.createElement("div");
-            listItem.innerHTML = messageTemplate(item);
-            list.appendChild(listItem);
-        });
+    var hideLoading = function () {
+        loading.style.display = "none";
     };
 
-    var loadingComplete = function (data) {
+    var showForm = function () {
         form.style.display = "block";
-        loading.style.display = "none";
-        return data;
     };
 
     var getMessages = function (position) {
@@ -67,7 +56,7 @@ define([
 
     // Update list
     var refresh = function () {
-        return position().then(getMessages, error).then(loadingComplete).then(renderList);
+        return position().then(getMessages, error).then(renderMessages).then(hideLoading);
     };
 
     var clearText = function () {
@@ -94,16 +83,17 @@ define([
         }).then(clearText).then(refresh);
     };
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        disable();
-        position().then(sendMessage, error).then(enable);
-    });
+    var dataLoaded = refresh();
 
-
-    refresh();
     getUser().then(function () {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            disable();
+            position().then(sendMessage, error).then(enable);
+        });
 
-    }, log.error);
-
+        dataLoaded.then(showForm);
+    }, function () {
+        loginMessage.style.display = "block";
+    });
 });

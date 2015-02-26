@@ -1,6 +1,9 @@
 @extends('app')
 
 @section('content')
+
+<p class="hidden" id="js__login-message">You must be <a href="/login">logged in</a> to leave a message. You may need to <a href="/signup">create an account</a></p>
+
 <p id="js__loading" class="throb">Loading...</p>
 
 <form class="hidden" id="js__message">
