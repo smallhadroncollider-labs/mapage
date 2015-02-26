@@ -26,7 +26,7 @@ build_public	:=		$(output)/public
 build_www		:=		$(build_public)
 build_css		:=		$(build_public)/css/*.main.css
 build_js		:=		$(build_public)/js/*.main.js
-build_img		:=		$(build_public)/images
+build_img		:=		$(build_public)/img
 build_fonts		:=		$(build_public)/fonts
 build_documents	:=		$(build_public)/documents
 
