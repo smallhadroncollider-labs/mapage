@@ -27,6 +27,11 @@ define([
         form = document.getElementById("js__message"),
         text = document.getElementById("js__message-text");
 
+    var error = function (error) {
+        loading.innerHTML = "Error: " + error.message;
+        loading.setAttribute("class", "error");
+    };
+
     // Update list
     var refresh = function () {
         list.innerHTML = null;
@@ -45,7 +50,7 @@ define([
                     list.appendChild(listItem);
                 });
             });
-        });
+        }, error);
     };
 
     refresh();
@@ -60,7 +65,7 @@ define([
                 latitude: coords.latitude,
                 message: text.value
             }).then(refresh);
-        });
+        }, error);
     });
 
 });

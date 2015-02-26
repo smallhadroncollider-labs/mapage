@@ -24,6 +24,10 @@ body {
     display: none;
 }
 
+.error {
+    color: #F22;
+}
+
 @include keyframes(throb) {
     0% { opacity: 1; }
     50% { opacity: 0; }
