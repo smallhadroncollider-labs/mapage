@@ -7,28 +7,23 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+    use Authenticatable, CanResetPassword;
 
-	use Authenticatable, CanResetPassword;
+    protected $table = 'users';
+    protected $fillable = ['name', 'email', 'password'];
+    protected $hidden = ['password', 'remember_token'];
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+    public function toArray() {
+       $array = parent::toArray();
+       $array['gravatar'] = $this->gravatar;
+       return $array;
+   }
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = ['name', 'email', 'password'];
+    public function getGravatarAttribute() {
+        $hash = md5(strtolower(trim($this->email)));
+        $default = urlencode(env("SITE_URL") . "/img/avatar.png");
+        $size = 48;
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
-
+        return "http://www.gravatar.com/avatar/{$hash}?d={$default}&s={$size}";
+    }
 }

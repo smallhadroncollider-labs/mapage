@@ -2,12 +2,17 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 
 use App\Message;
 
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller {
+    public function __construct(Guard $auth) {
+        parent::__construct($auth);
+        $this->auth = $auth;
+    }
 
     /**
      * Display a listing of the resource.
@@ -41,7 +46,14 @@ class MessagesController extends Controller {
      */
     public function store(Request $request)
     {
+        $user = $this->auth->user();
+
+        if (!$user) {
+            abort(401);
+        }
+
         $message = new Message($request->only("longitude", "latitude", "message"));
+        $message->user_id = $user->id;
         $message->save();
         return $message;
     }

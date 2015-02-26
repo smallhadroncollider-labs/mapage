@@ -6,12 +6,14 @@ define([
     "log",
     "json!config.json",
     "request",
-    "position"
+    "position",
+    "text!templates/message.html"
 ], function (
     log,
     config,
     request,
-    position
+    position,
+    message
 ) {
     "use strict";
 
@@ -28,17 +30,27 @@ define([
         text = document.getElementById("js__message-text"),
         submit = document.getElementById("js__submit");
 
+    var getUser = function () {
+        return request.get("current");
+    };
+
+    getUser().then(function () {
+
+    }, log.error);
+
     var error = function (error) {
         loading.innerHTML = "Error: " + error.message;
         loading.setAttribute("class", "error");
     };
+
+    var messageTemplate = _.template(message);
 
     var renderList = function (data) {
         list.innerHTML = null;
 
         _.forEach(data, function (item) {
             var listItem = document.createElement("li");
-            listItem.innerHTML = item.message;
+            listItem.innerHTML = messageTemplate(item);
             list.appendChild(listItem);
         });
     };

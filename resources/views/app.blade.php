@@ -18,7 +18,17 @@
         @endif
 
         <div class="container">
-            <h1>Mapage</h1>
+            <div class="row header">
+                <h1 class="six columns"><a class="link--stealth" href="/">Mapage</a></h1>
+                <div class="six columns user">
+                    @if ($user)
+                    <span class="user__name">{{ $user->name }}</span>
+                    <img class="avatar" src="{{ $user->gravatar }}" />
+                    @else
+                    <a href="/login">Login</a> / <a href="/signup">Sign Up</a>
+                    @endif
+                </div>
+            </div>
             @yield('content')
         </div>
     </body>

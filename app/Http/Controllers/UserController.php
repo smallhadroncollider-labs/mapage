@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller {
     public function __construct(Guard $auth) {
+        parent::__construct($auth);
         $this->auth = $auth;
     }
 
