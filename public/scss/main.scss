@@ -9,9 +9,8 @@
 @import "CSS:skeleton/css/skeleton";
 
 // Fonts
-$base-font-size: 16px;
+$base-font-size: 15px;
 $base-line-height: 24px;
-@include establish-baseline();
 
 html, body {
     // @include debug-vertical-alignment();
