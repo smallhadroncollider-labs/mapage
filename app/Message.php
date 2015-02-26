@@ -24,6 +24,7 @@ class Message extends Model {
                  ->where("latitude", "!=", "")
                  ->where("longitude", "!=", "")
                  ->having("distance_km", "<", $distance)
+                 ->orderBy("created_at", "DESC")
                  ->orderBy("distance_km", "ASC")
                  ->with("user")
                  ->get();
