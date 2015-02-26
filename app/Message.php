@@ -16,6 +16,10 @@ class Message extends Model {
         return $this->belongsTo('App\User');
     }
 
+    public function setMessageAttribute($value) {
+        $this->attributes['message'] = htmlentities($value);
+    }
+
     protected static function getFromCoordinates($latitude, $longitude, $distance)
     {
         $earthRadiusKM = 6371;
