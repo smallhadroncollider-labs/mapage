@@ -14,7 +14,7 @@ dev_js			:=		$(shell find $(dev_public)/js -name "*.js" -or -name "*.html" -or -
 dev_img			:=		$(shell find $(dev_public)/img -type f -not -path "*.DS_Store")
 dev_fonts		:=		$(shell find $(dev_public)/fonts -not -path "*.DS_Store")
 
-app_folders		:=		artisan app bootstrap config resources storage
+app_folders		:=		artisan app bootstrap config resources
 dev_app			:=		$(shell find $(app_folders) -type f -not -path "*.DS_Store") $(shell find database -type f -path "*.php")
 
 #####################
