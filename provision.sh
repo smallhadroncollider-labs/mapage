@@ -25,6 +25,8 @@ DB_DATABASE=${db}
 DB_USERNAME=${db}
 DB_PASSWORD=${password}
 
+SITE_URL=http://mapage.dev
+
 CACHE_DRIVER=file
 SESSION_DRIVER=file
 
