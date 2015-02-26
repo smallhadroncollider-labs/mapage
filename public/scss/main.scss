@@ -43,12 +43,30 @@ body {
 
 }
 
+.message {
+    @include padding-leader(1);
+    @include padding-trailer(1);
+    border-bottom: 1px solid #222;
+    min-height: 48px;
+}
+
 .user {
-    text-align: right;
-    line-height: 48px;
+    display: table;
+    float: right;
+    margin-left: 20px;
+
+    &__name,
+    &__img {
+        display: table-cell;
+    }
 
     &__name {
+        vertical-align: middle;
+        padding: 5px;
+    }
 
+    &__img {
+        width: 48px;
     }
 }
 

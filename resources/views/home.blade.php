@@ -11,7 +11,7 @@
     <button id="js__submit">Submit</button>
 </form>
 
-<ul id="js__message-list"></ul>
+<div id="js__message-list"></div>
 
 <script data-main="/js/load.js" src="/vendor/requirejs/require.js"></script>
 

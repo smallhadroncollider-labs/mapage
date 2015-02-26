@@ -34,9 +34,6 @@ define([
         return request.get("current");
     };
 
-    getUser().then(function () {
-
-    }, log.error);
 
     var error = function (error) {
         loading.innerHTML = "Error: " + error.message;
@@ -49,7 +46,7 @@ define([
         list.innerHTML = null;
 
         _.forEach(data, function (item) {
-            var listItem = document.createElement("li");
+            var listItem = document.createElement("div");
             listItem.innerHTML = messageTemplate(item);
             list.appendChild(listItem);
         });
@@ -72,8 +69,6 @@ define([
     var refresh = function () {
         return position().then(getMessages, error).then(loadingComplete).then(renderList);
     };
-
-    refresh();
 
     var clearText = function () {
         text.value = "";
@@ -104,4 +99,11 @@ define([
         disable();
         position().then(sendMessage, error).then(enable);
     });
+
+
+    refresh();
+    getUser().then(function () {
+
+    }, log.error);
+
 });

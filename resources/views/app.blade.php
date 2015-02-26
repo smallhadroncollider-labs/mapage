@@ -20,13 +20,15 @@
         <div class="container">
             <div class="row header">
                 <h1 class="six columns"><a class="link--stealth" href="/">Mapage</a></h1>
-                <div class="six columns user">
-                    @if ($user)
-                    <span class="user__name">{{ $user->name }}</span>
-                    <img class="avatar" src="{{ $user->gravatar }}" />
-                    @else
-                    <a href="/login">Login</a> / <a href="/signup">Sign Up</a>
-                    @endif
+                <div class="six columns">
+                    <div class="user">
+                        @if ($user)
+                        <span class="user__name">{{ $user->name }}</span>
+                        <img class="avatar user__img" src="{{ $user->gravatar }}" />
+                        @else
+                        <a href="/login">Login</a> / <a href="/signup">Sign Up</a>
+                        @endif
+                    </div>
                 </div>
             </div>
             @yield('content')

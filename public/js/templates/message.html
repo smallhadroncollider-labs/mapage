@@ -1,5 +1,14 @@
-<div class="row">
-    <img class="avatar" src="<%= user.gravatar %>"><%= user.name %>
-</div>
+<div class="message">
+    <div class="user">
+    <% if (user) { %>
+        <strong class="user__name"><%= user.name %></strong>
+        <img class="user__img avatar" src="<%= user.gravatar %>">
+    <% } else { %>
+        <img class="user__img avatar" src="/img/avatar.png">
+    <% } %>
+    </div>
 
-<%= message %>
+    <div class="message__text">
+        <%= message %>
+    </div>
+</div>
